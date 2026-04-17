@@ -1,1 +1,158 @@
-This project investigates the control limitations of a tandem thrust-vectoring UAV configured in a CH-47-inspired inline geometry. The system employs dual vectored propulsion units to achieve full attitude control without conventional aerodynamic surfaces. Experimental results revealed stable pitch and yaw dynamics but significant deficiencies in roll authority despite actuator saturation. Further analysis identified geometric constraints, actuator nonlinearity, and propulsion–control coupling as primary contributors to instability and energy inefficiency. The study highlights the importance of control moment arm distribution and actuator precision in underactuated aerial systems, providing design insights applicable to tilt-rotor and VTOL platforms.
+[bicopter.md](https://github.com/user-attachments/files/26843243/bicopter.md)
+
+**1. Abstract**
+
+This project is an experimental study of a tandem thrust-vectoring UAV
+that is based on the shape of the CH-47 helicopter. The system uses two
+inline propulsion units with servo-actuated tilt mechanisms to control
+the attitude completely without using traditional aerodynamic surfaces.
+The platform had very limited roll control, even though the actuators
+were saturated, even though it was able to keep a stable pitch and yaw.
+The study identifies geometric constraints, actuator nonlinearity, and
+propulsion control coupling as the main factors that affect performance
+through systematic testing, such as changing inertia and looking at how
+actuators behave. The results show that there is a control authority
+threshold below which actuator flaws control system behavior. This is
+important information for my future VTOL and tilt-rotor designs.
+
+**2. Objective**
+
+The goal of this project is to see if a minimal tandem rotor UAV
+configuration that only uses thrust vectoring for attitude control is
+possible. The research seeks to examine axis-wise controllability,
+discern constraints in roll dynamics, and evaluate the interplay between
+actuator performance and control authority in underactuated systems.
+
+**3. System Architecture**
+
+**3.1 Mechanical Layout**
+
+The UAV has a tandem inline design, with two propulsion units placed
+along the long axis. Each motor is attached to a servo-actuated tilt
+mechanism that lets it move in two directions at once. The airframe has
+a narrow lateral profile, which makes the structure less complicated but
+limits the roll moment arm. A centrally mounted battery provides power,
+which makes the setup compact but heavy with inertia.
+
+**3.2 Control Strategy**
+
+Attitude control is achieved through coordinated thrust vectoring:
+
+Pitch: Both rotors tilt in the same direction.
+
+Yaw: the difference in tilt between the front and back rotors\
+Roll: Making lateral forces indirectly by using thrust components that
+are caused by tilting\
+\
+The flight controller is based on a custom-configured INAV setup,
+adapted through target-level modifications to support non-standard
+actuator mapping and geometry.
+
+**4. Theoretical Framework**
+
+**4.1 Torque Generation**
+
+$$\tau = F \cdot r$$
+
+The amount of torque that aerial systems can make depends on both the
+force and the moment arm. While there was enough thrust, the inline
+configuration made the lateral moment arm for roll very small, which
+greatly limited torque generation.
+
+**4.2 Rotational Dynamics**
+
+$$\alpha = \frac{\tau}{I}$$
+
+Angular acceleration depends on the ratio of applied torque to moment of
+inertia. Experimental changes that increased inertia made the system
+more stable and predictable but less responsive, confirming that the
+system has limited torque.
+
+**5. Experimental Investigations**
+
+**5.1 Axis-wise Stability**
+
+-   Pitch: Stable due to large longitudinal moment arm
+
+-   Yaw: Responsive and controllable
+
+-   Roll: Severely under-responsive despite maximum tilt angles (\~40°)
+
+**5.2 Inertia Modification Experiment**
+
+To make the roll moment of inertia higher, more carbon fiber tubes with
+terminal masses of about 10 g each were added to the sides. The change
+made the motion smoother and more predictable, but it didn\'t make roll
+authority better. This demonstrates that higher inertia
+dampens oscillations without fixing the problem of inadequate torque
+being produced.
+
+**5.3 Actuator Behavior Analysis**
+
+The servo-actuated tilt system struggled to center itself consistently,
+which added random bias to the control loop. This caused constant
+micro-correction and limit-cycle oscillations, which were especially
+noticeable in the roll axis since it had low control authority.
+
+**5.4 Thermal Observations**
+
+The motors became extremely hot while hovering. This is due to constant
+corrective inputs and inefficient use of thrust, which kept the system
+in a constant state of control effort without reaching stable
+equilibrium.
+
+**6. Failure Analysis**
+
+The system showcases a basic roll axis control authority restriction.
+Just having the actuator range and thrust isn\'t good enough without the
+lateral moment arm to generate torque. Furthermore, actuator
+imperfections such as hysteresis and deadband inject process noise that
+becomes dominant under low authority conditions. The two effects combine
+to cause rolling behavior that cannot be predicted and roll oscillations
+that do not decay naturally.
+
+**7. Key Findings**
+
+-   Control effectiveness is determined by moment arm distribution, not
+    thrust magnitude.
+
+-   Actuator saturation does not give rise to a proportional response
+    under the control-limited regime on which the system operates.
+
+-   Adding inertia can improve the stabilization yet it decreases
+    controllability.
+
+-   When control authority is low, actuator imperfections will dictate
+    the dynamics.
+
+-   There is a minimum control authority threshold below which stable
+    control cannot be consistently attained.
+
+**8. Comparative Insight (Tricopter vs Bicopter)**
+
+Previous implementation of a tricopter VTOL with the same servos
+provided a stable performance despite lower roll authority due to
+lateral motor separation. In contrast, the tandem bicopter\'s inline
+geometry resulted in high sensitivity to actuator error. It shows,
+therefore, how important is the geometric configuration on the system
+robustness.
+
+**9. Design Limitations**
+
+-   Colinear thrust configuration keeps roll torque low
+
+-   No aerodynamic control surfaces
+
+-   High dependence on actuator precision
+
+-   Propeller wake interaction affecting efficiency
+
+**10. Conclusion**
+
+This project demonstrates that thrust-vectoring alone is insufficient
+for stable control in geometrically constrained configurations. The
+study highlights the interplay between mechanical design, actuator
+behavior, and control strategy, emphasizing the need for integrated
+system-level optimization in UAV development.
+
+
