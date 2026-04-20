@@ -1,6 +1,7 @@
-[bicopter.md](https://github.com/user-attachments/files/26843243/bicopter.md)
+
 
 **1. Abstract**
+<img width="4080" height="3072" alt="PXL_20260418_074142342" src="https://github.com/user-attachments/assets/2b98263a-245a-4b54-988f-1984cc15f4ac" />
 
 This project is an experimental study of a tandem thrust-vectoring UAV
 that is based on the shape of the CH-47 helicopter. The system uses two
@@ -24,6 +25,7 @@ discern constraints in roll dynamics, and evaluate the interplay between
 actuator performance and control authority in underactuated systems.
 
 **3. System Architecture**
+<img width="4080" height="3072" alt="PXL_20260418_074153446" src="https://github.com/user-attachments/assets/783ff50b-88e6-44d9-8d32-dc1c64adf096" />
 
 **3.1 Mechanical Layout**
 
@@ -35,6 +37,7 @@ limits the roll moment arm. A centrally mounted battery provides power,
 which makes the setup compact but heavy with inertia.
 
 **3.2 Control Strategy**
+<img width="3072" height="4080" alt="PXL_20260418_074234153" src="https://github.com/user-attachments/assets/cbab39d8-c05e-4a1d-bd56-50af0a64310b" />
 
 Attitude control is achieved through coordinated thrust vectoring:
 
@@ -47,6 +50,7 @@ are caused by tilting\
 The flight controller is based on a custom-configured INAV setup,
 adapted through target-level modifications to support non-standard
 actuator mapping and geometry.
+<img width="3072" height="4080" alt="PXL_20260418_074158584" src="https://github.com/user-attachments/assets/b6339e48-a906-469d-8aa2-df0b97cf90e6" />
 
 **4. Theoretical Framework**
 
@@ -86,6 +90,7 @@ made the motion smoother and more predictable, but it didn\'t make roll
 authority better. This demonstrates that higher inertia
 dampens oscillations without fixing the problem of inadequate torque
 being produced.
+<img width="4080" height="3072" alt="PXL_20260418_074209735" src="https://github.com/user-attachments/assets/dfbe9e75-6e3f-48d4-bb03-aee5df6eeb71" />
 
 **5.3 Actuator Behavior Analysis**
 
@@ -110,6 +115,7 @@ imperfections such as hysteresis and deadband inject process noise that
 becomes dominant under low authority conditions. The two effects combine
 to cause rolling behavior that cannot be predicted and roll oscillations
 that do not decay naturally.
+<img width="3072" height="4080" alt="PXL_20260418_074245946" src="https://github.com/user-attachments/assets/46303e76-91d0-45a6-8997-2e4cf5092ef0" />
 
 **7. Key Findings**
 
